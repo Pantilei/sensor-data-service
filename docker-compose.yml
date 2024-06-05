@@ -1,0 +1,29 @@
+version: '3.7'
+
+# NOTE: Do not use in production, solely for testing and development purposes. Keep database in separate VM
+
+services:
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - dbdata:/data/db
+
+  sds:
+    build: .
+    image: sds:latest
+    command: ["poetry", "run", "python", "-m", "sds"]
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - mongodb
+    healthcheck:
+      test: healthcheck || exit 1
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  dbdata:

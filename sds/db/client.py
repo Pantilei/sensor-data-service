@@ -29,6 +29,5 @@ class DBClient:
         def _is_repository(obj) -> bool:
             return issubclass(obj.__class__, BaseRepository)
 
-        print(inspect.getmembers(DB, _is_repository))
         for name, attr in inspect.getmembers(DB, _is_repository):
             yield name, attr
