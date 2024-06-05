@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "sensor-data-service"
+version = "0.1.0"
+description = ""
+authors = ["pantilei ianulov <ianulov.pantilei@gmail.com>"]
+readme = "README.md"
+packages = [{include = "sensor_data_service"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.111.0"
+motor = "^3.4.0"
+pydantic-settings = "^2.3.1"
+loguru = "^0.7.2"
+uvicorn = "^0.30.1"
+uvloop = "^0.19.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+ruff = "^0.4.8"
+mypy = "^1.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
