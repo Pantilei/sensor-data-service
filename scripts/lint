@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+ruff check sds
+black --check sds --diff
+mypy sds
+
